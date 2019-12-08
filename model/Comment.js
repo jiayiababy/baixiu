@@ -39,6 +39,14 @@ const CommentSchema = new Schema({
 // 创建分类集合
 const Comment = mongoose.model('Comment', CommentSchema);
 
+// Comment.create({
+// 	content: '内容很精彩 ',
+// 	author: '5de7b8b50c64fe3141ec4cb7', // 从数据库中查看用户id 
+// 	post: '5dea0a00329151d181d2ba2e'// 从数据库中查看文章id 
+// }).then(x => {
+// 	console.log('评论插入成功')
+// })
+
 // 文章分类格式校验（路由级别）
 const validateComment = comment => {
 	// _id验证规则
