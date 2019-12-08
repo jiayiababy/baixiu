@@ -9,7 +9,7 @@ $('#file').on('change',function(){
     //发送请求实现图片上传
     $.ajax({
         type:'post',
-        url:'/upload',
+        url:'/upload', 
         data:formData,
         processData:false,
         contentType:false,
