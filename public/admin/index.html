@@ -1,14 +1,14 @@
+<script src="/login/status"></script>
+<script>
+  
+    if (!isLogin) location.href = 'login.html';
+  </script>>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8">
   <title>Dashboard &laquo; Admin</title>
-  <script src="/login/status"></script>
-  <script>
-  if(!isLogin){
-    location.href='login.html'
-  }
-  </script>
+
   <link rel="stylesheet" href="../assets/vendors/bootstrap/css/bootstrap.css">
   <link rel="stylesheet" href="../assets/vendors/font-awesome/css/font-awesome.css">
   <link rel="stylesheet" href="../assets/vendors/nprogress/nprogress.css">
@@ -91,24 +91,26 @@
   <script src="../assets/vendors/jquery/jquery.js"></script>
   <script src="../assets/vendors/bootstrap/js/bootstrap.js"></script>
   <script src="../assets/js/index.js"></script>
+  <script src="../assets/js/common.js"></script>
   <script>NProgress.done()</script>
   <script>
-  $('#logout').on('click',function(){
-    //做一个二次确定是否要推迟
-    var isConfirm = confirm('cnm你确定要退出吗');
-    if(isConfirm) {
-      $.ajax({
-        url:'/logout',
-        type:'post',
-        success:function(){
-          location.href='/admin/login.html'
-        },
-        error:function(){
-          alert('退出失败')
-        }
-      })
-    }
-  })
+   
+  // $('#logout').on('click',function(){
+  //   //做一个二次确定是否要推迟
+  //   var isConfirm = confirm('cnm你确定要退出吗');
+  //   if(isConfirm) {
+  //     $.ajax({
+  //       url:'/logout',
+  //       type:'post',
+  //       success:function(){
+  //         location.href='/admin/login.html'
+  //       },
+  //       error:function(){
+  //         alert('退出失败')
+  //       }
+  //     })
+  //   }
+  // })
   </script>
 </body>
 </html>

@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-
 <head>
   <meta charset="utf-8">
   <title>Sign in &laquo; Admin</title>
   <link rel="stylesheet" href="../assets/vendors/bootstrap/css/bootstrap.css">
   <link rel="stylesheet" href="../assets/css/admin.css">
 </head>
-
 <body>
   <div class="login">
     <div class="login-wrap">
@@ -28,10 +26,44 @@
     </div>
   </div>
   <script src="../assets/vendors/jquery/jquery.min.js"></script>
-  <script src="../assets/js/common.js">
-    
+  <script type="text/javascript">
+    // 选择登录按钮并为其添加点击事件
+    $('#loginBtn').on('click', function () {
+      // 获取用户输入的邮箱地址
+      var email = $('#email').val();
+      // 获取用户输入的密码
+      var password = $('#password').val();
+      // 判断用户是否输入了邮箱地址
+      if (email.trim().length == 0) {
+        alert('请输入邮箱')
+        return;
+      }
+      // 判断用户是否输入了密码
+      if (password.trim().length == 0) {
+        alert('请输入密码');
+        return;
+      }
 
+
+      // console.log(email,password)
+      $.ajax({
+        type: 'post',
+        url: '/login',
+        data: {
+          email: email,
+          password: password
+        },
+        success: function (response) {
+          // 登录成功 跳转到数据管理的首页面
+          location.href = 'http://localhost:3000/admin/index.html';
+        },
+        error: function () {
+          // 登录失败
+          alert('用户名或者密码错误')
+        }
+      })
+
+    });
   </script>
 </body>
-
 </html>
