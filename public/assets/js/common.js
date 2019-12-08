@@ -1,29 +1,19 @@
-$('#loginBtn').on('click', function () {
-    var email = $('#email').val();
-    var password = $('#password').val();
-    if (email.trim().length == 0) {
-      alert('请输入邮箱')
-      return;
-    }
-    if (password.trim().length == 0) {
-      alert('请输入面密码')
-      return;
-    }
+$('#logout').on('click', function() {
+  var isConfirm = confirm('您确认要退出吗?')
+  if(isConfirm) {
     $.ajax({
-      url: '/login',
       type: 'post',
-      data: {
-        email: email,
-        password: password
-      },
-      success: function (data) {
-        location.href = '/admin/'
+      url: '/logout',
+      success: function(){
+        location.href = 'login.html'
       },
       error: function () {
-        alert('用户名或者密码错误')
+        alert('退出失败')
       }
     })
-  });
+  }
+})
+
   //处理日期时间格式
 function formateDate(date){
   //将日期时间字符串转换成日期对象
@@ -35,7 +25,7 @@ $.ajax({
   type: 'get',
   url: '/users/' + userId,
   success: function (response) {
-    console.log(response);
+    // console.log(response);
     $('.avatar').attr('src',response.avatar)
     $('.profile .name').html(response.nickName)
   } 

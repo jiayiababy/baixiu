@@ -2,9 +2,9 @@ $.ajax({
     type:'get',
     url:'/posts',
     success:function(response){
-        console.log(response);
-      var html = template('postsTpl', response);
-    //   console.log(html);
+
+      var html = template('postsTpl', {data:response.records});
+
       $('#postsBox').html(html)
       var page = template('pageTpl',response)
       $('#page').html(page)
@@ -17,7 +17,7 @@ $.ajax({
 //     return   date.getFullYear() + '-'+(date.getMonth()+1) +'-'+ date.getDate()
     
 // };
-//分页
+// 分页
 function changePage(page){
   $.ajax({
     type:'get',
@@ -26,8 +26,10 @@ function changePage(page){
       page:page
     },
     success:function(response){
-        console.log(response);
-      var html = template('postsTpl', response);
+      console.log(response);
+      var html = template('postsTpl', {data:response.records});
+      
+      console.log(html)
       $('#postsBox').html(html)
       var page = template('pageTpl',response)
       $('#page').html(page)
@@ -39,7 +41,7 @@ $.ajax({
   type:'get',
   url:'/categories',
   success:function(response){
-      console.log(response);
+      // console.log(response);
       var html = template('categoryTpl',{data:response});
       $('#categoryBox').html(html)   
   }
@@ -79,3 +81,4 @@ $('#postsBox').on('click','.delete',function(){
     })
   }
 })
+window.onload
