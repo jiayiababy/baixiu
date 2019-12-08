@@ -11,12 +11,12 @@ $.ajax({
     }
 })
 //处理日期时间格式
-function formateData(date){
-    //将日期时间字符串转换成日期对象
-    date = new Date(date);
-    return   date.getFullYear() + '-'+(date.getMonth()+1) +'-'+ date.getDate()
+// function formateDate(date){
+//     //将日期时间字符串转换成日期对象
+//     date = new Date(date);
+//     return   date.getFullYear() + '-'+(date.getMonth()+1) +'-'+ date.getDate()
     
-};
+// };
 //分页
 function changePage(page){
   $.ajax({
@@ -61,4 +61,21 @@ $('#filterForm').on('submit',function(){
     }
   })
   return false
+})
+//当删除按钮被点击的时候
+$('#postsBox').on('click','.delete',function(){
+  //获取管理员要删除的
+  if(confirm('您真的要进行删除吗?')){
+    //获取管理员要删除的id
+    var id = $(this).attr('data-id');
+    //向服务器发送请求 
+    $.ajax({
+      url:'/posts/'+id,
+      type:'delete',
+      success:function(){
+        location.reload()
+      }
+
+    })
+  }
 })
